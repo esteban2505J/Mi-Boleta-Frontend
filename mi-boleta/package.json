@@ -18,6 +18,10 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@mercadopago/sdk-js": "^0.0.3",
+    "@stripe/stripe-js": "^4.6.0",
+    "mercadopago": "^2.0.15",
+    "ngx-stripe": "^18.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

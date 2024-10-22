@@ -5,6 +5,7 @@ import { StripeService } from 'ngx-stripe';
 import { PaymentResponse } from '../../dto/PaymentResponse'; // Ajusta la ruta según sea necesario
 
 
+
 @Component({
   selector: 'app-checkout-stripe',
   standalone: true,

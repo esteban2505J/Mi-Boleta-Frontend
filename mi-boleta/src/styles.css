@@ -1,3 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
+/* Importaciones de PrimeNG */
+@import "primeng/resources/themes/lara-light-blue/theme.css";  /* Tema de PrimeNG */
+@import "primeng/resources/primeng.min.css";                    /* Componentes de PrimeNG */
+@import "primeicons/primeicons.css";                            /* Iconos de PrimeNG */
+@import "primeflex/primeflex.css";                              /* PrimeFlex para layout */
+
+/* Capas de Tailwind CSS */
+@layer tailwind-base {
+    @tailwind base; /* Estilos base de Tailwind */
+}
+
+@layer tailwind-components {
+    @tailwind components; /* Componentes de Tailwind */
+}
+
+@layer tailwind-utilities {
+    @tailwind utilities; /* Utilidades de Tailwind */
+}
+
+/* Estilos personalizados para sobrescribir */
+@layer tailwind-custom {
+    /* Aquí puedes añadir tus estilos personalizados */
+}

@@ -17,7 +17,7 @@ import { ButtonModule } from 'primeng/button';
    ButtonModule
 ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'] 
 })
 export class AppComponent {
   title = 'mi-boleta';

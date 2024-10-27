@@ -4,20 +4,7 @@
 @import "primeicons/primeicons.css";                            /* Iconos de PrimeNG */
 @import "primeflex/primeflex.css";                              /* PrimeFlex para layout */
 
-/* Capas de Tailwind CSS */
-@layer tailwind-base {
-    @tailwind base; /* Estilos base de Tailwind */
-}
 
-@layer tailwind-components {
-    @tailwind components; /* Componentes de Tailwind */
-}
+@tailwind components;
+@tailwind utilities;
 
-@layer tailwind-utilities {
-    @tailwind utilities; /* Utilidades de Tailwind */
-}
-
-/* Estilos personalizados para sobrescribir */
-@layer tailwind-custom {
-    /* Aquí puedes añadir tus estilos personalizados */
-}

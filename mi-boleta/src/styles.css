@@ -1,10 +1,17 @@
-/* Importaciones de PrimeNG */
-@import "primeng/resources/themes/lara-light-blue/theme.css";  /* Tema de PrimeNG */
-@import "primeng/resources/primeng.min.css";                    /* Componentes de PrimeNG */
+
 @import "primeicons/primeicons.css";                            /* Iconos de PrimeNG */
-@import "primeflex/primeflex.css";                              /* PrimeFlex para layout */
-
-
+                 
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+ }
+ 
+#app-root {
+    min-height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
+    background-color: #400101; /* Cambia este color al que prefieras */
+ }

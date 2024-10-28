@@ -6,25 +6,31 @@ import { AvatarModule } from 'primeng/avatar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
+import { ImageModule } from 'primeng/image';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports:  [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule],
+  imports:  [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, ImageModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent implements OnInit{
   items: MenuItem[] | undefined;
+  menuOpen = false;
+
+  toggleMenu() {
+     this.menuOpen = !this.menuOpen;
+  }
 
   ngOnInit() {
     this.items = [
         {
-            label: 'Home',
+            label: 'Eventos',
             icon: 'pi pi-home'
         },
         {
-            label: 'Features',
+            label: 'Categorías',
             icon: 'pi pi-star'
         },
         {
@@ -67,11 +73,7 @@ export class NavBarComponent implements OnInit{
                 }
             ]
         },
-        {
-            label: 'Contact',
-            icon: 'pi pi-envelope',
-            badge: '3'
-        }
+      
     ];
 }
 

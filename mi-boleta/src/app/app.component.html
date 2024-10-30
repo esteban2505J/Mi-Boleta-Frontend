@@ -4,12 +4,25 @@
       <app-nav-bar></app-nav-bar>
     </section>
   </header>
-  <body class="bg-[#400101] h-screen m-0">
-    <main>
-  
+  <body class="bg-[#400101] h-full ">
+    <main class="border-y-2 border-dashed h-screen m-20 flex flex-col ">
       <router-outlet></router-outlet>
     </main>
   </body>
+  <footer class=" bg-[#400101]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+     
+
+
+      <!-- Menú desplegable en móvil -->
+      <div >
+         <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Inicio</a>
+         <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Productos</a>
+         <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Servicios</a>
+         <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Contacto</a>
+      </div>
+   </div>
+  </footer>
 </html>
 
 

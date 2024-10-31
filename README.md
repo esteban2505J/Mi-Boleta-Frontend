@@ -24,7 +24,8 @@ Dirigido tanto a organizadores de eventos como a asistentes, **Mi Boleta** facil
 ## 🛠️ Arquitectura Frontend
 La arquitectura del frontend sigue un diseño modular con Angular y utiliza servicios para la integración con el backend, lo que facilita el mantenimiento y la escalabilidad. Se emplea **Tailwind CSS** para el diseño, junto con **Axios** para la comunicación con la API backend.
 
-![Frontend Architecture](https://github.com/user-attachments/assets/4ba3b363-6da9-4d9b-9e64-04ccf7e636c8)
+![Frontend Architecture](![image](https://github.com/user-attachments/assets/5a09aec5-785e-4157-8d8d-53c8baaf06a1)
+)
 
 ## ✔️ Tecnologías Utilizadas en el Frontend
 - **Angular**: Framework para la creación de aplicaciones web de una sola página (SPA).

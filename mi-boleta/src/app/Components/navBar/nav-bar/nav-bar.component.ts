@@ -21,6 +21,7 @@ export class NavBarComponent implements OnInit{
   menuOpen = false;
 
   toggleMenu() {
+    
      this.menuOpen = !this.menuOpen;
   }
 

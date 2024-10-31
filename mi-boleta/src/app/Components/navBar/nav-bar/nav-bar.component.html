@@ -38,23 +38,41 @@
           </div>
 
 
-          <!-- Botón para el menú en pantallas pequeñas -->
-          <div class="flex md:hidden items-center">
-             <button (click)="toggleMenu()" class="text-gray-400 hover:text-white">
-                <!-- Icono del menú -->
-                <span class="pi pi-bars text-2xl"></span>
-             </button>
-          </div>
+           <!-- Botón para el menú en pantallas pequeñas -->
+      <div class="flex md:hidden items-center">
+         
+           <label   class="btn btn-circle swap swap-rotate">
+             <input type="checkbox" (click)="toggleMenu()"/>
+             <svg
+               class="swap-off fill-current"
+               xmlns="http://www.w3.org/2000/svg"
+               width="32"
+               height="32"
+               viewBox="0 0 512 512"
+             >
+               <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+             </svg>
+             <svg
+               class="swap-on fill-current"
+               xmlns="http://www.w3.org/2000/svg"
+               width="32"
+               height="32"
+               viewBox="0 0 512 512"
+             >
+               <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
+             </svg>
+           </label>
+         
        </div>
-
-
-       <!-- Menú desplegable en móvil -->
-       <div *ngIf="menuOpen" class="md:hidden">
-          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Inicio</a>
-          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Productos</a>
-          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Servicios</a>
-          <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Contacto</a>
-       </div>
+     </div>
+ 
+     <!-- Menú desplegable en móvil -->
+     <div *ngIf="menuOpen" class="md:hidden transition-all duration-300 ease-in-out origin-top">
+       <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Inicio</a>
+       <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Productos</a>
+       <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Servicios</a>
+       <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700">Contacto</a>
+     </div>
     </div>
  </nav>
  

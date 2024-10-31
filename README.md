@@ -1,7 +1,7 @@
 <h1 align="left">Mi Boleta - Frontend</h1>
 <p align="left">
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
-   <img src="https://img.shields.io/github/stars/iamjuaness/Mi-Boleta?color=orange">
+   <img src="https://img.shields.io/github/stars/esteban2505J/Mi-Boleta-Frontend?color=orange">
 </p>
 
 <h1 align="left">🚧 Proyecto en construcción 🚧</h1>
@@ -24,8 +24,8 @@ Dirigido tanto a organizadores de eventos como a asistentes, **Mi Boleta** facil
 ## 🛠️ Arquitectura Frontend
 La arquitectura del frontend sigue un diseño modular con Angular y utiliza servicios para la integración con el backend, lo que facilita el mantenimiento y la escalabilidad. Se emplea **Tailwind CSS** para el diseño, junto con **Axios** para la comunicación con la API backend.
 
-![Frontend Architecture](![image](https://github.com/user-attachments/assets/5a09aec5-785e-4157-8d8d-53c8baaf06a1)
-)
+![Frontend Architecture](https://github.com/user-attachments/assets/5a09aec5-785e-4157-8d8d-53c8baaf06a1)
+
 
 ## ✔️ Tecnologías Utilizadas en el Frontend
 - **Angular**: Framework para la creación de aplicaciones web de una sola página (SPA).
@@ -33,4 +33,12 @@ La arquitectura del frontend sigue un diseño modular con Angular y utiliza serv
 - **Tailwind CSS**: Framework de CSS para estilos utilitarios y personalizables.
 - **Axios**: Librería de JavaScript para hacer peticiones HTTP, especialmente útil para la comunicación con el backend.
 - **HTML5 y CSS3**: Tecnologías de marcado y estilo para el diseño de la interfaz de usuario.
+
+
+ ## 💻 Autores
+
+| [<img src="https://avatars.githubusercontent.com/u/104481229?v=4" width=115><br><sub>Juan E. Cardona</sub>](https://github.com/iamjuaness) | [<img src="https://avatars.githubusercontent.com/u/114635275?v=4" width=115><br><sub>Juan E. Ramirez</sub>](https://github.com/esteban2505j)
+| :---: | :---: |
+
+
 

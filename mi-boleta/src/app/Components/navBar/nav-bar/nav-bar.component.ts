@@ -7,7 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
 import { ImageModule } from 'primeng/image';
-import { DialogComponent } from '../../general/dialog/dialog.component';
+import { DialogComponent } from './login_dialog/dialog.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -21,7 +21,6 @@ export class NavBarComponent implements OnInit{
   menuOpen = false;
 
   toggleMenu() {
-    
      this.menuOpen = !this.menuOpen;
   }
 

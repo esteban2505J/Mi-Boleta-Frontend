@@ -1,13 +1,15 @@
 
 
 <!-- Open the modal using ID.showModal() method -->
-<button class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700" onclick="my_modal_5.showModal()"><div class="flex flex-col justify-center items-center"> <span class="pi pi-user text-2xl"></span><h2>Ingresar</h2></div> </button>
-<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle h-auto ">
+<button class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700" onclick="my_modal_2.showModal()"><div class="flex flex-col justify-center items-center"> <span class="pi pi-user text-2xl"></span><h2>Ingresar</h2></div> </button>
+<dialog id="my_modal_2" class="modal modal-bottom sm:modal-middle h-auto ">
 
     
     
   <div class="modal-box bg-[#DD9843] " >
-
+    <form method="dialog">
+        <button class="btn btn-sm btn-circle bg-red-800 absolute right-2 top-2">✕</button>
+    </form>
         <header class="text-black ">
         <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Log in</h2>
         <span class="py-4 ">Introduzca su correo electrónico y contraseña 

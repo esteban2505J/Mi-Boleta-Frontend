@@ -1,0 +1,44 @@
+<div class="overflow-hidden">
+    <!-- Carousel container -->
+    <div
+      class="flex transition-transform duration-500 ease-in-out"
+      [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+    >
+      <!-- Images -->
+      <img
+        *ngFor="let image of images"
+        [src]="image"
+        class="w-full carousel-item"
+      />
+    </div>
+  
+    <!-- Navigation buttons -->
+    <button
+      (click)="prevSlide()"
+      class="absolute top-1/2 left-7 transform -translate-y-1/2  pi pi-chevron-circle-left text-4xl text-white transition duration-200 ease-in-out hover:scale-110 hover:rotate-[-10deg] hover:opacity-80 hover:shadow-lg hover:bg-yellow-500 rounded-full p-1"
+    >
+
+    </button>
+    <button
+      (click)="nextSlide()"
+      class="absolute top-1/2 right-7 transform -translate-y-1/2 pi pi-chevron-circle-right text-4xl text-white transition duration-200 ease-in-out hover:scale-110 hover:rotate-[10deg] hover:opacity-80 hover:shadow-lg hover:bg-yellow-500 rounded-full p-1 "
+    >
+    
+    </button>
+  
+    <!-- Indicator buttons -->
+    <div class="flex justify-center gap-2 py-4">
+      <button
+        *ngFor="let image of images; let i = index"
+        [ngClass]="{
+          'bg-yellow-500 text-[#400101]  border-1': currentIndex === i,
+          'bg-[#400101] text-yellow-500 border-yellow-500 border-1': currentIndex !== i
+        }"
+        (click)="goToSlide(i)"
+        class="pi pi-circle rounded-full border p-1 border-yellow-500 text-yellow-500"
+      >
+     
+    </button>
+    </div>
+  </div>
+  

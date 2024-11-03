@@ -8,11 +8,12 @@ import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
 import { ImageModule } from 'primeng/image';
 import { DialogComponent } from './login_dialog/dialog.component';
+import { CartDialogComponent } from '../cart-dialog/cart-dialog.component';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports:  [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, ImageModule, DialogComponent],
+  imports:  [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, ImageModule, DialogComponent,CartDialogComponent],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })

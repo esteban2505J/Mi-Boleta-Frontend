@@ -7,8 +7,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
 import { ImageModule } from 'primeng/image';
-import { DialogComponent } from './login_dialog/dialog.component';
-import { CartDialogComponent } from '../cart-dialog/cart-dialog.component';
+import { DialogComponent } from '../../../auth/components/login_dialog/dialog.component';
+import { CartDialogComponent } from '../../../cart/components/cart-dialog/cart-dialog.component';
 
 @Component({
   selector: 'app-nav-bar',

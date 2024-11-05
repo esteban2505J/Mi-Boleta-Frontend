@@ -20,6 +20,7 @@
     "@angular/router": "^18.2.0",
     "@mercadopago/sdk-js": "^0.0.3",
     "@stripe/stripe-js": "^4.6.0",
+    "axios": "^1.7.7",
     "mercadopago": "^2.0.15",
     "ngx-stripe": "^18.1.0",
     "primeflex": "^3.3.1",

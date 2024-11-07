@@ -18,9 +18,22 @@ import { NgClass, NgIf } from '@angular/common';
 })
 export class DialogComponent {
   isLogin: boolean = true;
+  recoverPassword:boolean = false;
+
+  recover(){
+    this.recoverPassword = true;
+    this.isLogin = false;
+  
+  }
 
   toggleView() {
     this.isLogin = !this.isLogin;
+    this.recoverPassword = false;
+  }
+
+  goToLogin() {
+    this.isLogin = true;
+    this.recoverPassword = false;
   }
 
   registerForm: FormGroup;

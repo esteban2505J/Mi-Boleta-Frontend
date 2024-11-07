@@ -5,6 +5,6 @@ import { RegisterClientDTO } from "../dto/RegisterClientDTO";
 export class AuthService {
     static async registerClient(data: RegisterClientDTO){
         
-        return await apiClient.post(`${urlEndpoints.authServiceUrl}/register-client`)
+        return await apiClient.post(`${urlEndpoints.authServiceUrl}/register-client`, data)
     }
 }

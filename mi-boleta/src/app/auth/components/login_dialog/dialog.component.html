@@ -11,7 +11,9 @@
     <form method="dialog">
         <button class="btn btn-sm btn-circle bg-red-800 absolute right-2 top-2">✕</button>
     </form>
-    <div class="login" *ngIf="isLogin">
+
+    <!-- this is the part of the LOGIN page -->
+    <div class="login" *ngIf="isLogin && !recoverPassword">
         
         <header class="text-black ">
             <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Log in <span class="pi-user pi text-3xl ml-4"></span></h2>
@@ -52,7 +54,7 @@
                     </label>
                     <div class="flex justify-end">
     
-                        <label for="" class="text-red-700 font-semibold hover:text-rose-500 transition-all"> <a href="/home">¿Olvidó su contraseña?</a></label>
+                        <label (click)="recover()" class="text-red-700 font-semibold hover:text-rose-500 transition-all"> ¿Olvidó su contraseña?</label>
                     </div>
                 </div>
             </form>
@@ -71,8 +73,8 @@
     
     </div>
 
-    <!------------------------------------------- this is the part of the register page ------------------------->
-    <div class="register" *ngIf="!isLogin">
+    <!------------------------------------------- this is the part of the REGISTER page ------------------------->
+    <div class="register" *ngIf="!isLogin && !recoverPassword">
 
         <header class="text-black ">
             <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Register</h2>
@@ -168,6 +170,47 @@
 
     </div>
     
+    <!------------------------------------------- this is the part of the  RECOVER MY PASSWORD page ------------------------------>
+     <div class="recoverPasword" *ngIf="recoverPassword ">
+
+           
+        <header class="text-black ">
+            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 "><span class="pi pi-arrow-left text-xl mr-4 hover:bg-[#400101] rounded-full hover:text-white p-2 px-3 hover:cursor-pointer" (click)="goToLogin()"></span>Recover my password <span class="pi-lock pi text-3xl ml-4"></span></h2>
+            <span class="py-4 ">Introduzca su correo electrónico</span>
+        </header>
+        
+        <body>
+            <form action="" class="flex flex-col gap-y-5 m-6">
+                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      class="h-4 w-4 opacity-70">
+                      <path
+                        d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+                      <path
+                        d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+                    </svg>
+                    <input type="text" class="grow" placeholder="Email" />
+                </label>
+    
+        
+            </form>
+        </body>
+    
+        <footer >
+            <article class="justify-self-center">
+                <h4 class="text-black">¿Quieres volver a intentarlo? 
+                </h4>
+                <span (click)="toggleView()" class="text-red-700 border-b border-red-600 cursor-pointer">volver a enviar codigo!</span>
+              </article>
+            <div class="justify-self-center mt-6">
+                <button class="btn text-white bg-[#400101] border-2 px-8 ">Send code</button>
+            </div>
+        </footer>
+
+     </div>
     
 </div>
   

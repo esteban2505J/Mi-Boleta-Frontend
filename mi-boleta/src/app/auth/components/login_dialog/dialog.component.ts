@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RegisterClientDTO } from '../../dto/RegisterClientDTO';
 import { AuthService } from '../../services/auth.service';
 import { NgClass, NgIf } from '@angular/common';
+import { LoginClientDTO } from '../../dto/LoginClientDTO';
 
 
 @Component({
@@ -17,6 +18,8 @@ import { NgClass, NgIf } from '@angular/common';
   styleUrl: './dialog.component.css'
 })
 export class DialogComponent {
+
+  // flags of modal view
   isLogin: boolean = true;
   recoverPassword:boolean = false;
 
@@ -37,8 +40,10 @@ export class DialogComponent {
   }
 
   registerForm: FormGroup;
+
+  loginForm:FormGroup;
   
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, ) {
     this.registerForm = this.fb.group({
       idUser: ['', [Validators.required]],
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -48,6 +53,11 @@ export class DialogComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     }, { validators: this.passwordMatchValidator });
+
+    this.loginForm = this.fb.group({
+      emailAddress: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    })
    
   }
 
@@ -63,6 +73,10 @@ export class DialogComponent {
     return this.registerForm.value as RegisterClientDTO;
   }
 
+  get loginData(): LoginClientDTO{
+    return this.loginForm.value as LoginClientDTO;
+  }
+
    // Método de validación personalizada para verificar que las contraseñas coincidan
    passwordMatchValidator(formGroup: FormGroup) {
     const password = formGroup.get('password')?.value;
@@ -70,15 +84,35 @@ export class DialogComponent {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
-  async onSubmit() {
+  async onSubmitRegister() {
     if (this.registerForm.valid) {
-      console.log('Datos de registro:', this.registerData);
+      try {
+        console.log('Datos de registro:', this.registerData);
       const response = await  AuthService.registerClient(this.registerData)
       console.log(response);
+        
+      } catch (error) {
+        console.log(error);
+      }
       
     } else {
       console.warn('Formulario inválido');
     }
+  }
+
+  async onSubmitLogin(){
+    if (this.loginForm.valid){
+      try {
+        console.log('Datos del login', this.loginData);
+        const loginResponse = await AuthService.loginClient(this.loginData)
+        console.log(loginResponse);
+        
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+
   }
 
 }

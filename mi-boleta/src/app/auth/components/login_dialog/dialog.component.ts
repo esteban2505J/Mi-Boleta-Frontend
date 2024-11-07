@@ -3,18 +3,25 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterClientDTO } from '../../dto/RegisterClientDTO';
 import { AuthService } from '../../services/auth.service';
+import { NgClass, NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [DialogModule, ButtonModule, InputTextModule, AvatarModule],
+  imports: [DialogModule, ButtonModule, InputTextModule, AvatarModule, NgIf,NgClass, ReactiveFormsModule],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css'
 })
 export class DialogComponent {
+  isLogin: boolean = true;
+
+  toggleView() {
+    this.isLogin = !this.isLogin;
+  }
 
   registerForm: FormGroup;
   

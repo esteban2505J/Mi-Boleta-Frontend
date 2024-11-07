@@ -6,14 +6,15 @@
 
     
     
-<div class="modal-box bg-[#DD9843] " >
+<div class="modal-box bg-[#DD9843] "  [ngClass]="{ 'bg-[#DD9843]': isLogin, 'bg-[#EDB017]': !isLogin }"
+>
     <form method="dialog">
         <button class="btn btn-sm btn-circle bg-red-800 absolute right-2 top-2">✕</button>
     </form>
-    <div class="login">
+    <div class="login" *ngIf="isLogin">
         
         <header class="text-black ">
-            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Log in</h2>
+            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Log in <span class="pi-user pi text-3xl ml-4"></span></h2>
             <span class="py-4 ">Introduzca su correo electrónico y contraseña 
                 para iniciar sesión y disfrutar del espectáculo.
             </span>
@@ -59,8 +60,10 @@
     
         <footer >
             <article class="justify-self-center">
-                <h4 class="text-black">¿No tienes una cuenta aún? <a href="/home" class="text-red-700 border-b border-red-600">Click aquí!!</a></h4>
-            </article>
+                <h4 class="text-black">¿No tienes una cuenta aún? 
+                  <span (click)="toggleView()" class="text-red-700 border-b border-red-600 cursor-pointer">Click aquí!!</span>
+                </h4>
+              </article>
             <div class="justify-self-center mt-6">
                 <button class="btn text-white bg-[#400101] border-2 px-8 ">Log in</button>
             </div>
@@ -68,18 +71,41 @@
     
     </div>
 
-    <!-------------this is the part of the register page -->
-    <div class="register">
+    <!------------------------------------------- this is the part of the register page ------------------------->
+    <div class="register" *ngIf="!isLogin">
 
         <header class="text-black ">
-            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Log in</h2>
-            <span class="py-4 ">Introduzca su correo electrónico y contraseña 
-                para iniciar sesión y disfrutar del espectáculo.
-            </span>
+            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Register</h2>
+            
         </header>
         
         <body>
-            <form action="" class="flex flex-col gap-y-5 m-6">
+            <form  class="flex flex-col gap-y-5 m-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <!-- full name -->
+                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
+                    <input type="text" class="grow" placeholder="Nombre completo" />
+                </label>
+
+                <!-- id -->
+                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
+                    <span class=" pi pi-id-card"></span>
+                    <input type="text" class="grow" placeholder="Identifiación"/>
+                </label>
+
+                <!-- address -->
+                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="opacity-70">
+                        <path d="M12 2a7.008 7.008 0 0 0-7 7c0 5.353 6.036 11.45 6.293 11.707l.707.707.707-.707C12.964 20.45 19 14.353 19 9a7.008 7.008 0 0 0-7-7zm0 16.533C10.471 16.825 7 12.553 7 9a5 5 0 0 1 10 0c0 3.546-3.473 7.823-5 9.533z"/><path d="M12 6a3 3 0 1 0 3 3 3 3 0 0 0-3-3zm0 4a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"/></svg>
+                    <input type="text" class="grow" placeholder="Recidence Address" />
+                </label>
+
+                <!-- phone number -->
+                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
+                    <span class="pi pi-phone"></span>
+                    <input type="text" class="grow" placeholder="Phone Number" />
+                </label>
+
+                <!-- email -->
                 <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -93,35 +119,50 @@
                     </svg>
                     <input type="text" class="grow" placeholder="Email" />
                 </label>
-    
-                <div>
-                    <label class="input input-bordered flex items-center gap-2 mb-1  bg-slate-100 text-black">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 16 16"
-                          fill="currentColor"
-                          class="h-4 w-4 opacity-70">
-                          <path
-                            fill-rule="evenodd"
-                            d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-                            clip-rule="evenodd" />
-                        </svg>
-                        <input type="password" class="grow"  value="password" />
-                    </label>
-                    <div class="flex justify-end">
-    
-                        <label for="" class="text-red-700 font-semibold hover:text-rose-500 transition-all"> <a href="/home">¿Olvidó su contraseña?</a></label>
-                    </div>
-                </div>
+
+                <!-- password -->
+        
+                <label class="input input-bordered flex items-center gap-2 mb-1  bg-slate-100 text-black">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      class="h-4 w-4 opacity-70">
+                      <path
+                        fill-rule="evenodd"
+                        d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <input type="password" class="grow"  />
+                </label>
+
+                 <!--comfirm password -->
+                <label class="input input-bordered flex items-center gap-2 mb-1  bg-slate-100 text-black">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      class="h-4 w-4 opacity-70">
+                      <path
+                        fill-rule="evenodd"
+                        d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <input type="password" class="grow"  />
+                </label>
+                    
+             
             </form>
         </body>
     
         <footer >
             <article class="justify-self-center">
-                <h4 class="text-black">¿No tienes una cuenta aún? <a href="/home" class="text-red-700 border-b border-red-600">Click aquí!!</a></h4>
-            </article>
+                <h4 class="text-black">¿Ya tienes una cuenta? 
+                  <span (click)="toggleView()" class="text-red-700 border-b border-red-600 cursor-pointer">Click aquí!!</span>
+                </h4>
+              </article>
             <div class="justify-self-center mt-6">
-                <button class="btn text-white bg-[#400101] border-2 px-8 ">Log in</button>
+                <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmit()">Register</button>
             </div>
         </footer>
 

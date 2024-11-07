@@ -42,6 +42,8 @@ export class DialogComponent {
   registerForm: FormGroup;
 
   loginForm:FormGroup;
+
+  recoverPaswordForm: FormGroup;
   
   constructor(private fb: FormBuilder, ) {
     this.registerForm = this.fb.group({
@@ -57,6 +59,10 @@ export class DialogComponent {
     this.loginForm = this.fb.group({
       emailAddress: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+    })
+
+    this.recoverPaswordForm =  this.fb.group({
+      emailAddress: ['', [Validators.required, Validators.email]],
     })
    
   }
@@ -84,6 +90,7 @@ export class DialogComponent {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
+  // Function for the register process
   async onSubmitRegister() {
     if (this.registerForm.valid) {
       try {
@@ -100,12 +107,30 @@ export class DialogComponent {
     }
   }
 
+  // Function for the register process
   async onSubmitLogin(){
     if (this.loginForm.valid){
       try {
         console.log('Datos del login', this.loginData);
         const loginResponse = await AuthService.loginClient(this.loginData)
         console.log(loginResponse);
+        
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+
+  }
+
+  async onSubmitForgotPassword(){
+    if(this.recoverPaswordForm.valid){
+      try {
+
+        const email = this.recoverPaswordForm.value.emailAddress;
+        console.log(email);
+        const responseForgotPasword = await AuthService.forgotPasword(email)
+        console.log(responseForgotPasword);
         
       } catch (error) {
         console.log(error);

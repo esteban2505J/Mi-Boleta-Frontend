@@ -12,4 +12,9 @@ export class AuthService {
     static async loginClient(data:LoginClientDTO){
         return await apiClient.post(`${urlEndpoints.authServiceUrl}/login-client`, data)
     }
+
+    static async forgotPasword(data:string){
+        return await apiClient.post(`${urlEndpoints.authServiceUrl}/forgot-password?emailAddress=${data}`)
+    }
 }
+        

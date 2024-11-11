@@ -17,11 +17,155 @@
              />
 
         </div>
-        <div class="join">
-            <input class="join-item btn" type="radio" name="options" aria-label="Radio 1" />
-            <input class="join-item btn" type="radio" name="options" aria-label="Radio 2" />
-
+       
+        <div class="flex justify-center mb-4">
+          <!-- Tabs Container -->
+          <div class="flex space-x-2 bg-inherit-200 rounded-lg p-1 border-neutral-950 border-2 mt-4">
+            <!-- Tab 1: Boletas Activas -->
+            <label class="flex items-center space-x-2 py-2 px-4 cursor-pointer rounded-lg transition-colors duration-200"
+              [ngClass]="{'bg-red-600 text-white': selectedTab === 'active', 'text-gray-700': selectedTab !== 'active'}"
+              (click)="selectTab('active')">
+              <span class="pi pi-ticket"></span>
+              <span>Boletas Activas</span>
+            </label>
+        
+            <!-- Tab 2: Historial -->
+            <label class="flex items-center space-x-2 py-2 px-4 cursor-pointer rounded-lg transition-colors duration-200"
+              [ngClass]="{'bg-red-600 text-white': selectedTab === 'history', 'text-gray-700': selectedTab !== 'history'}"
+              (click)="selectTab('history')">
+              <span class="pi pi-history"></span>
+              <span>Historial</span>
+            </label>
           </div>
+        </div>
+        
+        <!-- Contenido del Tab Seleccionado -->
+        <div class="p-4 flex flex-col ">
+          <div *ngIf="selectedTab === 'active'" class="bg-[#DD9843] w-full text-neutral-950 rounded-lg p-5 ">
+            <h3 class="text-2xl font-bold">La bohemia</h3>
+            <div class="grid grid-cols-3">
+              <span class="pi pi-ticket text-3xl"></span>
+              <div class="">
+                <div class="flex">
+                  <span class="pi pi-calendar"></span>
+                  <h4>22/08/2024</h4>
+
+                </div>
+                <div class="flex">
+                  <span class="pi 
+                  pi pi-users"></span>
+                  <h4>2</h4>
+
+                </div>
+               
+                
+
+              </div>
+
+              <div class="flex">
+                <span class="pi 
+                pi-map-marker"></span>
+                <h4>Julio Mario Santo Domingo</h4>
+  
+              </div>
+              
+            </div>
+            
+            
+          </div>
+          <div *ngIf="selectedTab === 'history'">
+            <h3 class="text-lg font-bold">Historial</h3>
+            <p>Contenido del historial de boletas...</p>
+          </div>
+        </div>
+
+
+        
+         <!-- Contenido del Tab Seleccionado -->
+         <div class="p-4 flex flex-col ">
+          <div *ngIf="selectedTab === 'active'" class="bg-[#DD9843] w-full text-neutral-950 rounded-lg p-5 ">
+            <h3 class="text-2xl font-bold">La bohemia</h3>
+            <div class="grid grid-cols-3">
+              <span class="pi pi-ticket text-3xl"></span>
+              <div class="">
+                <div class="flex">
+                  <span class="pi pi-calendar"></span>
+                  <h4>22/08/2024</h4>
+
+                </div>
+                <div class="flex">
+                  <span class="pi 
+                  pi pi-users"></span>
+                  <h4>2</h4>
+
+                </div>
+               
+                
+
+              </div>
+
+              <div class="flex">
+                <span class="pi 
+                pi-map-marker"></span>
+                <h4>Julio Mario Santo Domingo</h4>
+  
+              </div>
+              
+            </div>
+            
+            
+          </div>
+          <div *ngIf="selectedTab === 'history'">
+            <h3 class="text-lg font-bold">Historial</h3>
+            <p>Contenido del historial de boletas...</p>
+          </div>
+        </div>
+         <!-- Contenido del Tab Seleccionado -->
+         <div class="p-4 flex flex-col ">
+          <div *ngIf="selectedTab === 'active'" class="bg-[#DD9843] w-full text-neutral-950 rounded-lg p-5 ">
+            <h3 class="text-2xl font-bold">La bohemia</h3>
+            <div class="grid grid-cols-3">
+              <span class="pi pi-ticket text-3xl"></span>
+              <div class="">
+                <div class="flex">
+                  <span class="pi pi-calendar"></span>
+                  <h4>22/08/2024</h4>
+
+                </div>
+                <div class="flex">
+                  <span class="pi 
+                  pi pi-users"></span>
+                  <h4>2</h4>
+
+                </div>
+               
+                
+
+              </div>
+
+              <div class="flex">
+                <span class="pi 
+                pi-map-marker"></span>
+                <h4>Julio Mario Santo Domingo</h4>
+  
+              </div>
+              
+            </div>
+            
+            
+          </div>
+          <div *ngIf="selectedTab === 'history'">
+
+            
+            
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+
+          <button class="btn"> Cerrar</button>
+        </div>
+        
     </div>
     </div>
   </div>

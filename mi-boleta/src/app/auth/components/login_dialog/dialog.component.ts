@@ -19,7 +19,7 @@ import { LoginClientDTO } from '../../dto/LoginClientDTO';
 })
 export class DialogComponent {
 
-  @ViewChildren('code0, code1, code2, code3') codeInputs!: QueryList<ElementRef>;
+  @ViewChildren('code0, code1, code2, code3,code4,code5') codeInputs!: QueryList<ElementRef>;
 
   // flags of modal view
   isLogin: boolean = true;
@@ -47,6 +47,8 @@ export class DialogComponent {
   loginForm:FormGroup;
 
   recoverPaswordForm: FormGroup;
+
+  sendCodeRecoverForm:FormGroup;
   
   constructor(private fb: FormBuilder, ) {
     this.registerForm = this.fb.group({
@@ -66,6 +68,10 @@ export class DialogComponent {
 
     this.recoverPaswordForm =  this.fb.group({
       emailAddress: ['', [Validators.required, Validators.email]],
+    })
+
+    this.sendCodeRecoverForm = fb.group({
+      code:['',[Validators.required,  Validators.pattern(/^\d{4}[A-Z]{2}$/)]]
     })
    
   }
@@ -134,7 +140,10 @@ export class DialogComponent {
         const email = this.recoverPaswordForm.value.emailAddress;
         console.log(email);
         const responseForgotPasword = await AuthService.forgotPasword(email)
-        if(responseForgotPasword.data.data === 'SUCCESS') this.inputCodeRecover = true;
+        if(responseForgotPasword.data.data === 'SUCCESS') {
+          AuthService.setUserEmail(email)
+          this.inputCodeRecover = true;
+        }
         console.log(responseForgotPasword);
         
       } catch (error) {
@@ -184,9 +193,30 @@ export class DialogComponent {
     event.preventDefault();
   }
 
-  getCode() {
-    const code = this.codeInputs.toArray().map(input => input.nativeElement.value).join('');
-    console.log('Código ingresado:', code);
+  // function to get code of the input 
+  getCode():string {
+    return this.codeInputs.toArray().map(input => input.nativeElement.value).join('');
+  }
+
+  // function for managing the sending of the password recovery code 
+  async onSubmitCodeRecover(){
+
+    try {
+      
+        try {
+          const responseSendCodeRe= await AuthService.sendCodeForgotPass(this.getCode(), AuthService.getUserEmail())
+          console.log(responseSendCodeRe);
+          console.log('hello');
+        } catch (error) {
+          console.log(error);
+          
+        }
+      
+      
+    } catch (error) {
+      
+    }
+
   }
 
 }

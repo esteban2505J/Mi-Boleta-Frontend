@@ -220,7 +220,7 @@
             </span>
         </header>
 
-        <form class="flex justify-center space-x-2 mt-4 text-black">
+        <form class="flex justify-center space-x-2 mt-4 text-black" [formGroup]="sendCodeRecoverForm">
 
             <!-- Input 1 -->
             <input
@@ -265,10 +265,30 @@
               (paste)="handlePaste($event)"
               #code3
             />
+            <!-- Input 5 -->
+            <input
+              type="text"
+              maxlength="1"
+              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              (input)="handleInput($event, 4)"
+              (keydown)="handleKeyDown($event, 4)"
+              (paste)="handlePaste($event)"
+              #code4
+            />
+            <!-- Input 6 -->
+            <input
+              type="text"
+              maxlength="1"
+              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              (input)="handleInput($event, 5)"
+              (keydown)="handleKeyDown($event, 5)"
+              (paste)="handlePaste($event)"
+              #code5
+            />
 
         </form>
         <div class="flex flex-row mt-6 justify-center">
-            <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitLogin()">Send Code</button>
+            <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeRecover()">Send Code</button>
         </div>
           
 

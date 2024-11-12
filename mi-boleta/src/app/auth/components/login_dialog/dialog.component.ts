@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,ElementRef, ViewChild ,ViewChildren, QueryList} from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -18,6 +18,8 @@ import { LoginClientDTO } from '../../dto/LoginClientDTO';
   styleUrl: './dialog.component.css'
 })
 export class DialogComponent {
+
+  @ViewChildren('code0, code1, code2, code3') codeInputs!: QueryList<ElementRef>;
 
   // flags of modal view
   isLogin: boolean = true;
@@ -123,6 +125,7 @@ export class DialogComponent {
 
   }
 
+  // Function for  submit the code of recover
   async onSubmitForgotPassword(){
     if(this.recoverPaswordForm.valid){
       try {
@@ -138,6 +141,50 @@ export class DialogComponent {
       }
     }
 
+  }
+
+  // Function to handle recovery code character entry
+  handleInput(event: any, index: number) {
+    const input = event.target;
+    if (input.value.length === 1 && index < this.codeInputs.length - 1) {
+      // Mover el foco al siguiente input
+      this.codeInputs.toArray()[index + 1].nativeElement.focus();
+    }
+  }
+
+  // function to handle the keystroke event on input
+  handleKeyDown(event: KeyboardEvent, index: number) {
+    const input = event.target as HTMLInputElement;
+
+    if (event.key === 'ArrowLeft' && index > 0) {
+      // Mover foco al input anterior
+      this.codeInputs.toArray()[index - 1].nativeElement.focus();
+    } else if (event.key === 'ArrowRight' && index < this.codeInputs.length - 1) {
+      // Mover foco al siguiente input
+      this.codeInputs.toArray()[index + 1].nativeElement.focus();
+    } else if (event.key === 'Backspace' && input.value === '' && index > 0) {
+      // Mover foco al input anterior si está vacío
+      this.codeInputs.toArray()[index - 1].nativeElement.focus();
+    }
+  }
+
+  // function to handle the code pasting event
+  handlePaste(event: ClipboardEvent) {
+    const clipboardData = event.clipboardData?.getData('text') || '';
+    const values = clipboardData.split('');
+
+    // Rellenar los inputs con el valor pegado
+    this.codeInputs.forEach((input, index) => {
+      input.nativeElement.value = values[index] || '';
+    });
+
+    // Prevenir el comportamiento por defecto del pegado
+    event.preventDefault();
+  }
+
+  getCode() {
+    const code = this.codeInputs.toArray().map(input => input.nativeElement.value).join('');
+    console.log('Código ingresado:', code);
   }
 
 }

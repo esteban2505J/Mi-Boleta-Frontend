@@ -24,6 +24,7 @@ export class DialogComponent {
   // flags of modal view
   isLogin: boolean = true;
   recoverPassword:boolean = false;
+  inputCodeRecover:boolean=false;
 
   recover(){
     this.recoverPassword = true;
@@ -133,6 +134,7 @@ export class DialogComponent {
         const email = this.recoverPaswordForm.value.emailAddress;
         console.log(email);
         const responseForgotPasword = await AuthService.forgotPasword(email)
+        if(responseForgotPasword.data.data === 'SUCCESS') this.inputCodeRecover = true;
         console.log(responseForgotPasword);
         
       } catch (error) {

@@ -13,7 +13,7 @@
     </form>
 
     <!-- this is the part of the LOGIN page -->
-    <div class="login" *ngIf="isLogin && !recoverPassword">     
+    <div class="login" *ngIf="isLogin && !recoverPassword && !inputCodeRecover">     
         
         <header class="text-black ">
             <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Log in <span class="pi-user pi text-3xl ml-4"></span></h2>
@@ -74,7 +74,7 @@
     </div>
 
     <!------------------------------------------- this is the part of the REGISTER page ------------------------->
-    <div class="register" *ngIf="!isLogin && !recoverPassword">
+    <div class="register" *ngIf="!isLogin && !recoverPassword && !inputCodeRecover">
 
         <header class="text-black ">
             <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 "><span class="pi pi-arrow-left text-xl mr-4 hover:bg-[#400101] rounded-full hover:text-white p-2 px-3 hover:cursor-pointer" (click)="goToLogin()"></span>Register</h2>
@@ -171,7 +171,7 @@
     </div>
     
     <!------------------------------------------- this is the part of the  RECOVER MY PASSWORD page ------------------------------>
-     <div class="recoverPasword" *ngIf="recoverPassword ">
+     <div class="recoverPasword" *ngIf="recoverPassword  && !inputCodeRecover">
 
            
         <header class="text-black ">
@@ -213,7 +213,7 @@
      </div>
 
      <!-- this is the part of introduce CODE of recover my password page -->
-      <div class="flex flex-col">
+      <div class="flex flex-col" *ngIf="inputCodeRecover">
         <header class="text-black ">
             <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Recuperar mi contraseña <span class="pi-key pi text-3xl ml-4"></span></h2>
             <span class="py-4 "> Por favor ingrese el codigo enviado a su correo electronico

@@ -8,6 +8,7 @@ import { RegisterClientDTO } from '../../dto/RegisterClientDTO';
 import { AuthService } from '../../services/auth.service';
 import { NgClass, NgIf } from '@angular/common';
 import { LoginClientDTO } from '../../dto/LoginClientDTO';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -28,7 +29,10 @@ export class DialogComponent {
   recoverPassword:boolean = false;
   inputCodeRecover:boolean=false;
   activeAccount:boolean=false;
+  visible: boolean = false;
 
+
+  
   recover(){
     this.recoverPassword = true;
     this.isLogin = false;
@@ -53,7 +57,7 @@ export class DialogComponent {
 
   sendCodeRecoverForm:FormGroup;
   
-  constructor(private fb: FormBuilder, ) {
+  constructor(private fb: FormBuilder,private cookieService: CookieService ) {
     this.registerForm = this.fb.group({
       idUser: ['', [Validators.required]],
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -79,7 +83,20 @@ export class DialogComponent {
    
   }
 
-  visible: boolean = false;
+  guardarToken(token: string): void {
+    const expirationDays = 7;
+    this.cookieService.set('auth_token', token, expirationDays);
+  }
+
+  eliminarToken(): void {
+    this.cookieService.delete('auth_token');
+  }
+
+  leerToken(token:string):string{
+    return this.cookieService.get(token);
+  }
+
+  
 
   showDialog() {
       this.visible = true;
@@ -129,6 +146,10 @@ export class DialogComponent {
         console.log(loginResponse);
         if(loginResponse.data.response.token === 'INACTIVE'){
           this.activeAccount= true;
+        }
+        if(loginResponse.data.response.token !== null ){
+          const token = loginResponse.data.response.token;
+          this.guardarToken(token);
         }
         
       } catch (error) {

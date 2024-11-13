@@ -11,6 +11,7 @@ import { Injectable } from "@angular/core";
 export class AuthService {
 
     static  userEmail:string='';
+    static idUser:string='';
 
     static setUserEmail(email: string) {
         this.userEmail = email;
@@ -20,6 +21,13 @@ export class AuthService {
         return this.userEmail;
       }
 
+    static setIdUser(idUser:string){
+        this.idUser=idUser
+    }
+
+    static getIdUser():string{
+        return this.idUser;
+    }
     static async registerClient(data: RegisterClientDTO){
         
         return await apiClient.post(`${urlEndpoints.authServiceUrl}/register-client`, data)
@@ -35,8 +43,9 @@ export class AuthService {
     static async sendCodeForgotPass(code:string,emailAddress:string){
         return await apiClient.post(`${urlEndpoints.authServiceUrl}/verify-code-forgot-password?code=${code}&emailAddress=${emailAddress}`)
     }
-    static async sendCodeActiveAccount(code:string, idUser:string){
-        return await apiClient.post(`${urlEndpoints.authServiceUrl}/activation-code?code=${code}&idUser=${idUser}`)
+    static async sendCodeActiveAccount(code:string, emailAddress:string){
+        return await apiClient.post(`${urlEndpoints.authServiceUrl}/activation-code?code=${code}&emailAddress=${emailAddress}`)
     }
+   
 }
         

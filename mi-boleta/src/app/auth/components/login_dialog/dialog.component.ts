@@ -124,9 +124,10 @@ export class DialogComponent {
     if (this.loginForm.valid){
       try {
         console.log('Datos del login', this.loginData);
+        AuthService.setUserEmail(this.loginData.emailAddress)
         const loginResponse = await AuthService.loginClient(this.loginData)
         console.log(loginResponse);
-        if(loginResponse.data.token === 'INACTIVE'){
+        if(loginResponse.data.response.token === 'INACTIVE'){
           this.activeAccount= true;
         }
         
@@ -231,9 +232,11 @@ export class DialogComponent {
     try {
       
         try {
-          const responseSendCodeRe= await AuthService.sendCodeForgotPass(this.getCode(this.codeInputs), AuthService.getUserEmail())
+          console.log(AuthService.getUserEmail());
+          console.log(this.getCode(this.activeInputs));
+          const responseSendCodeRe = await AuthService.sendCodeActiveAccount(this.getCode(this.activeInputs), AuthService.getUserEmail())
           console.log(responseSendCodeRe);
-          console.log('hello');
+      
         } catch (error) {
           console.log(error);
           

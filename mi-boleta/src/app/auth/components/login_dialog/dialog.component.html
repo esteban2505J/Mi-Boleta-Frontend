@@ -12,7 +12,7 @@
         <button class="btn btn-sm btn-circle bg-red-800 absolute right-2 top-2">✕</button>
     </form>
 
-    <!-- this is the part of the LOGIN page -->
+    <!--------------------------------- this is the part of the LOGIN page ---------------------------->
     <div class="login" *ngIf="isLogin && !recoverPassword && !inputCodeRecover">     
         
         <header class="text-black ">
@@ -72,6 +72,7 @@
         </footer>
     
     </div>
+    
     <!--------------------------------- this is the part of the ACTIVE ACCOUNT page ----------------------------->
     <div class="flex flex-col" *ngIf="activeAccount">
       <header class="text-black ">
@@ -148,7 +149,7 @@
 
       </form>
       <div class="flex flex-row mt-6 justify-center">
-          <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeRecover()">Send Code</button>
+          <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeActive()">Send Code</button>
       </div>
     </div>
     <!------------------------------------------- this is the part of the REGISTER page ------------------------->

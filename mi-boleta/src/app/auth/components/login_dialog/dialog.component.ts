@@ -31,6 +31,9 @@ export class DialogComponent {
   activeAccount:boolean=false;
   visible: boolean = false;
 
+  //flag research
+  loading:boolean = false;
+
 
   
   recover(){
@@ -123,10 +126,12 @@ export class DialogComponent {
   async onSubmitRegister() {
     if (this.registerForm.valid) {
       try {
-        console.log('Datos de registro:', this.registerData);
+      
+      this.loading=true
+      console.log('Datos de registro:', this.registerData);
       const response = await  AuthService.registerClient(this.registerData)
       console.log(response);
-        
+      this.loading=false
       } catch (error) {
         console.log(error);
       }
@@ -140,6 +145,7 @@ export class DialogComponent {
   async onSubmitLogin(){
     if (this.loginForm.valid){
       try {
+        this.loading=true
         console.log('Datos del login', this.loginData);
         AuthService.setUserEmail(this.loginData.emailAddress)
         const loginResponse = await AuthService.loginClient(this.loginData)
@@ -151,7 +157,7 @@ export class DialogComponent {
           const token = loginResponse.data.response.token;
           this.guardarToken(token);
         }
-        
+        this.loading=false
       } catch (error) {
         console.log(error);
         
@@ -228,7 +234,6 @@ export class DialogComponent {
 
   // function for managing the sending of the password recovery code 
   async onSubmitCodeRecover(){
-
     try {
       
         try {
@@ -239,10 +244,8 @@ export class DialogComponent {
           console.log(error);
           
         }
-      
-      
     } catch (error) {
-      
+      console.log(error);
     }
 
   }

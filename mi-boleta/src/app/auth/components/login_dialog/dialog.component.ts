@@ -1,4 +1,4 @@
-import { Component ,ElementRef, ViewChild ,ViewChildren, QueryList} from '@angular/core';
+import { Component ,ElementRef ,ViewChildren, QueryList} from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -18,13 +18,16 @@ import { LoginClientDTO } from '../../dto/LoginClientDTO';
   styleUrl: './dialog.component.css'
 })
 export class DialogComponent {
-
+// inputs of  recover password code
   @ViewChildren('code0, code1, code2, code3,code4,code5') codeInputs!: QueryList<ElementRef>;
+  // inputs of active account code
+  @ViewChildren('active0, active1, active2, active3,active4,active5') activeInputs!: QueryList<ElementRef>;
 
   // flags of modal view
   isLogin: boolean = true;
   recoverPassword:boolean = false;
   inputCodeRecover:boolean=false;
+  activeAccount:boolean=false;
 
   recover(){
     this.recoverPassword = true;
@@ -123,6 +126,9 @@ export class DialogComponent {
         console.log('Datos del login', this.loginData);
         const loginResponse = await AuthService.loginClient(this.loginData)
         console.log(loginResponse);
+        if(loginResponse.data.token === 'INACTIVE'){
+          this.activeAccount= true;
+        }
         
       } catch (error) {
         console.log(error);
@@ -194,8 +200,8 @@ export class DialogComponent {
   }
 
   // function to get code of the input 
-  getCode():string {
-    return this.codeInputs.toArray().map(input => input.nativeElement.value).join('');
+  getCode(code:QueryList<ElementRef>):string {
+    return code.toArray().map(input => input.nativeElement.value).join('');
   }
 
   // function for managing the sending of the password recovery code 
@@ -204,7 +210,7 @@ export class DialogComponent {
     try {
       
         try {
-          const responseSendCodeRe= await AuthService.sendCodeForgotPass(this.getCode(), AuthService.getUserEmail())
+          const responseSendCodeRe= await AuthService.sendCodeForgotPass(this.getCode(this.codeInputs), AuthService.getUserEmail())
           console.log(responseSendCodeRe);
           console.log('hello');
         } catch (error) {
@@ -218,5 +224,28 @@ export class DialogComponent {
     }
 
   }
+
+   // function for managing the sending of the password recovery code 
+   async onSubmitCodeActive(){
+
+    try {
+      
+        try {
+          const responseSendCodeRe= await AuthService.sendCodeForgotPass(this.getCode(this.codeInputs), AuthService.getUserEmail())
+          console.log(responseSendCodeRe);
+          console.log('hello');
+        } catch (error) {
+          console.log(error);
+          
+        }
+      
+      
+    } catch (error) {
+      
+    }
+
+  }
+
+
 
 }

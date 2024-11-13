@@ -35,5 +35,8 @@ export class AuthService {
     static async sendCodeForgotPass(code:string,emailAddress:string){
         return await apiClient.post(`${urlEndpoints.authServiceUrl}/verify-code-forgot-password?code=${code}&emailAddress=${emailAddress}`)
     }
+    static async sendCodeActiveAccount(code:string, idUser:string){
+        return await apiClient.post(`${urlEndpoints.authServiceUrl}/activation-code?code=${code}&idUser=${idUser}`)
+    }
 }
         

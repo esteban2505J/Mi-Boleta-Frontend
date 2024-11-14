@@ -261,10 +261,12 @@ export class DialogComponent {
     try {
       
         try {
+          this.loading=true;
           console.log(AuthService.getUserEmail());
           console.log(this.getCode(this.activeInputs));
           const responseSendCodeRe = await AuthService.sendCodeActiveAccount(this.getCode(this.activeInputs), AuthService.getUserEmail())
           console.log(responseSendCodeRe);
+          this.loading=false
       
         } catch (error) {
           console.log(error);

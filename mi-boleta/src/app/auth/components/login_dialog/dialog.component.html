@@ -149,7 +149,7 @@
 
       </form>
       <div class="flex flex-row mt-6 justify-center">
-          <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeActive()">Send Code</button>
+          <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeActive()"><p *ngIf="!loading">Send Code</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
       </div>
     </div>
     <!------------------------------------------- this is the part of the REGISTER page ------------------------->
@@ -285,7 +285,7 @@
                 <span (click)="toggleView()" class="text-red-700 border-b border-red-600 cursor-pointer">volver a enviar codigo!</span>
               </article>
             <div class="justify-self-center mt-6">
-                <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitForgotPassword()">Send code</button>
+                <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitForgotPassword()"><p *ngIf="!loading">Send Code</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
             </div>
         </footer>
 
@@ -367,7 +367,7 @@
 
         </form>
         <div class="flex flex-row mt-6 justify-center">
-            <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeRecover()">Send Code</button>
+            <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeRecover()"><p *ngIf="!loading">Send Code</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
         </div>
           
 

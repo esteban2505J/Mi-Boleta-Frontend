@@ -30,6 +30,7 @@ export class DialogComponent {
   inputCodeRecover:boolean=false;
   activeAccount:boolean=false;
   visible: boolean = false;
+  changePassword:boolean=false;
 
   //flag research
   loading:boolean = false;
@@ -240,6 +241,10 @@ export class DialogComponent {
           const responseSendCodeRe= await AuthService.sendCodeForgotPass(this.getCode(this.codeInputs), AuthService.getUserEmail())
           console.log(responseSendCodeRe);
           console.log('hello');
+          if(responseSendCodeRe.data.response.error ==='SUCCESS'){
+            this.changePassword=true
+          }
+          
         } catch (error) {
           console.log(error);
           

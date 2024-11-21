@@ -459,6 +459,88 @@
           
 
       </div>
+
+      <!-- this is the part of introduce CODE of recover my password page  DELETE -->
+      <div class="flex flex-col" *ngIf="inputCodeRecover">
+        <header class="text-black ">
+            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Recuperar mi contraseña <span class="pi-key pi text-3xl ml-4"></span></h2>
+            <span class="py-4 "> Por favor ingrese el codigo enviado a su correo electronico
+            </span>
+        </header>
+
+        <form class="flex justify-center space-x-2 mt-4 text-black" [formGroup]="sendCodeRecoverForm">
+
+            <!-- Input 1 -->
+            <input
+              type="text"
+              maxlength="1"
+              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              (input)="handleInput($event, 0)"
+              (keydown)="handleKeyDown($event, 0)"
+              (paste)="handlePaste($event)"
+              #code0
+            />
+          
+            <!-- Input 2 -->
+            <input
+              type="text"
+              maxlength="1"
+              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              (input)="handleInput($event, 1)"
+              (keydown)="handleKeyDown($event, 1)"
+              (paste)="handlePaste($event)"
+              #code1
+            />
+          
+            <!-- Input 3 -->
+            <input
+              type="text"
+              maxlength="1"
+              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              (input)="handleInput($event, 2)"
+              (keydown)="handleKeyDown($event, 2)"
+              (paste)="handlePaste($event)"
+              #code2
+            />
+          
+            <!-- Input 4 -->
+            <input
+              type="text"
+              maxlength="1"
+              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              (input)="handleInput($event, 3)"
+              (keydown)="handleKeyDown($event, 3)"
+              (paste)="handlePaste($event)"
+              #code3
+            />
+            <!-- Input 5 -->
+            <input
+              type="text"
+              maxlength="1"
+              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              (input)="handleInput($event, 4)"
+              (keydown)="handleKeyDown($event, 4)"
+              (paste)="handlePaste($event)"
+              #code4
+            />
+            <!-- Input 6 -->
+            <input
+              type="text"
+              maxlength="1"
+              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+              (input)="handleInput($event, 5)"
+              (keydown)="handleKeyDown($event, 5)"
+              (paste)="handlePaste($event)"
+              #code5
+            />
+
+        </form>
+        <div class="flex flex-row mt-6 justify-center">
+            <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeRecover()"><p *ngIf="!loading">Send Code</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
+        </div>
+          
+
+      </div>
       
     
 </div>

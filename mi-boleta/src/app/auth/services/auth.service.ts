@@ -13,6 +13,7 @@ export class AuthService {
 
     static  userEmail:string='';
     static idUser:string='';
+    static isLogged:boolean=false;
 
     static setUserEmail(email: string) {
         this.userEmail = email;

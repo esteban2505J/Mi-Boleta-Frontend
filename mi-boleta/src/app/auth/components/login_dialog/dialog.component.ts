@@ -280,6 +280,11 @@ export class DialogComponent {
 
   }
 
-
+  getSateLoggin ():boolean{
+    return AuthService.isLogged
+  }
+  setStateLoggin(login:boolean):void{
+    AuthService.isLogged=login;
+  }
 
 }

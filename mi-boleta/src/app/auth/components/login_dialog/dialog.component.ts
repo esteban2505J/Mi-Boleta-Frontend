@@ -157,6 +157,7 @@ export class DialogComponent {
         if(loginResponse.data.response.token !== null ){
           const token = loginResponse.data.response.token;
           this.guardarToken(token);
+          this.setStateLoggin(true)
         }
         this.loading=false
       } catch (error) {

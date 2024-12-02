@@ -1,548 +1,541 @@
-
-
 <!-- Open the modal using ID.showModal() method -->
-<button class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700" onclick="my_modal_2.showModal()" ngClass=""><div class="flex flex-col justify-center items-center"> <span class="pi pi-user text-2xl"></span><h2>Ingresar</h2></div> </button>
-<dialog id="my_modal_2" class="modal modal-bottom sm:modal-middle h-auto ">
-
-    
-    
-<div class="modal-box bg-[#DD9843] "  [ngClass]="{ 'bg-[#DD9843]': isLogin, 'bg-[#EDB017]': !isLogin }"
->   
+<button
+  class="px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700"
+  onclick="my_modal_2.showModal()"
+  ngClass=""
+>
+  <div class="flex flex-col justify-center items-center">
+    <span class="pi pi-user text-2xl"></span>
+    <h2>Ingresar</h2>
+  </div>
+</button>
+<dialog id="my_modal_2" class="modal modal-bottom sm:modal-middle h-auto">
+  <div
+    class="modal-box bg-[#DD9843]"
+    [ngClass]="{ 'bg-[#DD9843]': isLogin, 'bg-[#EDB017]': !isLogin }"
+  >
     <form method="dialog">
-        <button class="btn btn-sm btn-circle bg-red-800 absolute right-2 top-2">✕</button>
+      <button class="btn btn-sm btn-circle bg-red-800 absolute right-2 top-2">
+        ✕
+      </button>
     </form>
 
     <!--------------------------------- this is the part of the LOGIN page ---------------------------->
-    <div class="login" *ngIf="isLogin && !recoverPassword && !inputCodeRecover && !activeAccount">     
-        
-        <header class="text-black ">
-            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Log in <span class="pi-user pi text-3xl ml-4"></span></h2>
-            <span class="py-4 ">Introduzca su correo electrónico y contraseña 
-                para iniciar sesión y disfrutar del espectáculo.
-            </span>
-        </header>
-        
-        <body>
-            <form action="" class="flex flex-col gap-y-5 m-6" [formGroup]="loginForm">
-                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      class="h-4 w-4 opacity-70">
-                      <path
-                        d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
-                      <path
-                        d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
-                    </svg>
-                    <input type="text" class="grow" placeholder="Email" formControlName="emailAddress"/>
-                </label>
-    
-                <div>
-                    <label class="input input-bordered flex items-center gap-2 mb-1  bg-slate-100 text-black">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 16 16"
-                          fill="currentColor"
-                          class="h-4 w-4 opacity-70">
-                          <path
-                            fill-rule="evenodd"
-                            d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-                            clip-rule="evenodd" />
-                        </svg>
-                        <input type="password" class="grow"  value="password"  formControlName="password"/>
-                    </label>
-                    <div class="flex justify-end">
-                        <label (click)="recover()" class="text-red-700 font-semibold hover:text-rose-500 transition-all cursor-pointer"> ¿Olvidó su contraseña?</label>
-                    </div>
-                </div>
-            </form>
-        </body>
-    
-        <footer >
-            <article class="justify-self-center">
-                <h4 class="text-black">¿No tienes una cuenta aún? 
-                  <span (click)="toggleView()" class="text-red-700 border-b border-red-600 cursor-pointer">Click aquí!!</span>
-                </h4>
-              </article>
-            <div class="justify-self-center mt-6">
-                <button class="btn text-white bg-[#400101] border-2 px-8 "  (click)="onSubmitLogin() "><p *ngIf="!loading">Log in</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
-               
+    <div
+      class="login"
+      *ngIf="isLogin && !recoverPassword && !inputCodeRecover && !activeAccount"
+    >
+      <header class="text-black">
+        <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4">
+          Log in <span class="pi-user pi text-3xl ml-4"></span>
+        </h2>
+        <span class="py-4"
+          >Introduzca su correo electrónico y contraseña para iniciar sesión y
+          disfrutar del espectáculo.
+        </span>
+      </header>
+
+      <body>
+        <form
+          action=""
+          class="flex flex-col gap-y-5 m-6"
+          [formGroup]="loginForm"
+        >
+          <label
+            class="input input-bordered flex items-center gap-2 bg-slate-100 text-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="h-4 w-4 opacity-70"
+            >
+              <path
+                d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"
+              />
+              <path
+                d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
+              />
+            </svg>
+            <input
+              type="text"
+              class="grow"
+              placeholder="Email"
+              formControlName="emailAddress"
+            />
+          </label>
+
+          <div>
+            <label
+              class="input input-bordered flex items-center gap-2 mb-1 bg-slate-100 text-black"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                class="h-4 w-4 opacity-70"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <input
+                type="password"
+                class="grow"
+                value="password"
+                formControlName="password"
+              />
+            </label>
+            <div class="flex justify-end">
+              <label
+                (click)="recover()"
+                class="text-red-700 font-semibold hover:text-rose-500 transition-all cursor-pointer"
+              >
+                ¿Olvidó su contraseña?</label
+              >
             </div>
-        </footer>
-    
+          </div>
+        </form>
+      </body>
+
+      <footer>
+        <article class="justify-self-center">
+          <h4 class="text-black">
+            ¿No tienes una cuenta aún?
+            <span
+              (click)="toggleView()"
+              class="text-red-700 border-b border-red-600 cursor-pointer"
+              >Click aquí!!</span
+            >
+          </h4>
+        </article>
+        <div class="justify-self-center mt-6">
+          <button
+            class="btn text-white bg-[#400101] border-2 px-8"
+            (click)="onSubmitLogin()"
+          >
+            <p *ngIf="!loading">Log in</p>
+            <i [ngClass]="{ 'pi pi-spin pi-spinner': loading }"></i>
+          </button>
+        </div>
+      </footer>
     </div>
 
     <!--------------------------------- this is the part of the ACTIVE ACCOUNT page ----------------------------->
     <div class="flex flex-col" *ngIf="activeAccount">
-      <header class="text-black ">
-          <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Activar mi cuenta <span class="pi-key pi text-3xl ml-4"></span></h2>
-          <span class="py-4 "> Por favor ingrese el codigo enviado a su correo electronico
-          </span>
+      <header class="text-black">
+        <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4">
+          Activar mi cuenta <span class="pi-key pi text-3xl ml-4"></span>
+        </h2>
+        <span class="py-4">
+          Por favor ingrese el codigo enviado a su correo electronico
+        </span>
       </header>
 
-      <form class="flex justify-center space-x-2 mt-4 text-black" >
+      <form class="flex justify-center space-x-2 mt-4 text-black">
+        <!-- Input 1 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 0, activeInputs)"
+          (keydown)="handleKeyDown($event, 0, activeInputs)"
+          (paste)="handlePaste($event, activeInputs)"
+          #active0
+        />
 
-          <!-- Input 1 -->
-          <input
-            type="text"
-            maxlength="1"
-            class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            (input)="handleInput($event, 0)"
-            (keydown)="handleKeyDown($event, 0)"
-            (paste)="handlePaste($event)"
-            #active0
-          />
-        
-          <!-- Input 2 -->
-          <input
-            type="text"
-            maxlength="1"
-            class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            (input)="handleInput($event, 1)"
-            (keydown)="handleKeyDown($event, 1)"
-            (paste)="handlePaste($event)"
-            #active1
-          />
-        
-          <!-- Input 3 -->
-          <input
-            type="text"
-            maxlength="1"
-            class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            (input)="handleInput($event, 2)"
-            (keydown)="handleKeyDown($event, 2)"
-            (paste)="handlePaste($event)"
-            #active2
-          />
-        
-          <!-- Input 4 -->
-          <input
-            type="text"
-            maxlength="1"
-            class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            (input)="handleInput($event, 3)"
-            (keydown)="handleKeyDown($event, 3)"
-            (paste)="handlePaste($event)"
-            #active3
-          />
-          <!-- Input 5 -->
-          <input
-            type="text"
-            maxlength="1"
-            class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            (input)="handleInput($event, 4)"
-            (keydown)="handleKeyDown($event, 4)"
-            (paste)="handlePaste($event)"
-            #active4
-          />
-          <!-- Input 6 -->
-          <input
-            type="text"
-            maxlength="1"
-            class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-            (input)="handleInput($event, 5)"
-            (keydown)="handleKeyDown($event, 5)"
-            (paste)="handlePaste($event)"
-            #active5
-          />
+        <!-- Input 2 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 1, activeInputs)"
+          (keydown)="handleKeyDown($event, 1, activeInputs)"
+          (paste)="handlePaste($event, activeInputs)"
+          #active1
+        />
 
+        <!-- Input 3 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 2, activeInputs)"
+          (keydown)="handleKeyDown($event, 2, activeInputs)"
+          (paste)="handlePaste($event, activeInputs)"
+          #active2
+        />
+
+        <!-- Input 4 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 3, activeInputs)"
+          (keydown)="handleKeyDown($event, 3, activeInputs)"
+          (paste)="handlePaste($event, activeInputs)"
+          #active3
+        />
+        <!-- Input 5 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 4, activeInputs)"
+          (keydown)="handleKeyDown($event, 4, activeInputs)"
+          (paste)="handlePaste($event, activeInputs)"
+          #active4
+        />
+        <!-- Input 6 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 5, activeInputs)"
+          (keydown)="handleKeyDown($event, 5, activeInputs)"
+          (paste)="handlePaste($event, activeInputs)"
+          #active5
+        />
       </form>
       <div class="flex flex-row mt-6 justify-center">
-          <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeActive()"><p *ngIf="!loading">Send Code</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
+        <button
+          class="btn text-white bg-[#400101] border-2 px-8"
+          (click)="onSubmitCodeActive()"
+        >
+          <p *ngIf="!loading">Send Code</p>
+          <i [ngClass]="{ 'pi pi-spin pi-spinner': loading }"></i>
+        </button>
       </div>
     </div>
     <!------------------------------------------- this is the part of the REGISTER page ------------------------->
-    <div class="register" *ngIf="!isLogin && !recoverPassword && !inputCodeRecover">
+    <div
+      class="register"
+      *ngIf="!isLogin && !recoverPassword && !inputCodeRecover"
+    >
+      <header class="text-black">
+        <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4">
+          <span
+            class="pi pi-arrow-left text-xl mr-4 hover:bg-[#400101] rounded-full hover:text-white p-2 px-3 hover:cursor-pointer"
+            (click)="goToLogin()"
+          ></span
+          >Register
+        </h2>
+      </header>
 
-        <header class="text-black ">
-            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 "><span class="pi pi-arrow-left text-xl mr-4 hover:bg-[#400101] rounded-full hover:text-white p-2 px-3 hover:cursor-pointer" (click)="goToLogin()"></span>Register</h2>
-            
-        </header>
-        
-        <body>
-            <form  class="flex flex-col gap-y-5 m-6" [formGroup]="registerForm">
-                <!-- full name -->
-                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
-                    <input type="text" formControlName="name" class="grow" placeholder="Nombre completo" />
-                </label>
+      <body>
+        <form class="flex flex-col gap-y-5 m-6" [formGroup]="registerForm">
+          <!-- full name -->
+          <label
+            class="input input-bordered flex items-center gap-2 bg-slate-100 text-black"
+          >
+            <input
+              type="text"
+              formControlName="name"
+              class="grow"
+              placeholder="Nombre completo"
+            />
+          </label>
 
-                <!-- id -->
-                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
-                    <span class=" pi pi-id-card"></span>
-                    <input type="text" class="grow" formControlName="idUser" placeholder="Identifiación"/>
-                </label>
+          <!-- id -->
+          <label
+            class="input input-bordered flex items-center gap-2 bg-slate-100 text-black"
+          >
+            <span class="pi pi-id-card"></span>
+            <input
+              type="text"
+              class="grow"
+              formControlName="idUser"
+              placeholder="Identifiación"
+            />
+          </label>
 
-                <!-- address -->
-                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="opacity-70">
-                        <path d="M12 2a7.008 7.008 0 0 0-7 7c0 5.353 6.036 11.45 6.293 11.707l.707.707.707-.707C12.964 20.45 19 14.353 19 9a7.008 7.008 0 0 0-7-7zm0 16.533C10.471 16.825 7 12.553 7 9a5 5 0 0 1 10 0c0 3.546-3.473 7.823-5 9.533z"/><path d="M12 6a3 3 0 1 0 3 3 3 3 0 0 0-3-3zm0 4a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"/></svg>
-                    <input type="text" class="grow" formControlName="address" placeholder="Recidence Address" />
-                </label>
+          <!-- address -->
+          <label
+            class="input input-bordered flex items-center gap-2 bg-slate-100 text-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              class="opacity-70"
+            >
+              <path
+                d="M12 2a7.008 7.008 0 0 0-7 7c0 5.353 6.036 11.45 6.293 11.707l.707.707.707-.707C12.964 20.45 19 14.353 19 9a7.008 7.008 0 0 0-7-7zm0 16.533C10.471 16.825 7 12.553 7 9a5 5 0 0 1 10 0c0 3.546-3.473 7.823-5 9.533z"
+              />
+              <path
+                d="M12 6a3 3 0 1 0 3 3 3 3 0 0 0-3-3zm0 4a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"
+              />
+            </svg>
+            <input
+              type="text"
+              class="grow"
+              formControlName="address"
+              placeholder="Recidence Address"
+            />
+          </label>
 
-                <!-- phone number -->
-                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
-                    <span class="pi pi-phone"></span>
-                    <input type="text" formControlName="phoneNumber" class="grow" placeholder="Phone Number" />
-                </label>
+          <!-- phone number -->
+          <label
+            class="input input-bordered flex items-center gap-2 bg-slate-100 text-black"
+          >
+            <span class="pi pi-phone"></span>
+            <input
+              type="text"
+              formControlName="phoneNumber"
+              class="grow"
+              placeholder="Phone Number"
+            />
+          </label>
 
-                <!-- email -->
-                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      class="h-4 w-4 opacity-70">
-                      <path
-                        d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
-                      <path
-                        d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
-                    </svg>
-                    <input type="text" formControlName="emailAddress" class="grow" placeholder="Email" />
-                </label>
+          <!-- email -->
+          <label
+            class="input input-bordered flex items-center gap-2 bg-slate-100 text-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="h-4 w-4 opacity-70"
+            >
+              <path
+                d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"
+              />
+              <path
+                d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
+              />
+            </svg>
+            <input
+              type="text"
+              formControlName="emailAddress"
+              class="grow"
+              placeholder="Email"
+            />
+          </label>
 
-                <!-- password -->
-        
-                <label class="input input-bordered flex items-center gap-2 mb-1  bg-slate-100 text-black">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      class="h-4 w-4 opacity-70">
-                      <path
-                        fill-rule="evenodd"
-                        d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-                        clip-rule="evenodd" />
-                    </svg>
-                    <input type="password" formControlName="password" class="grow"  />
-                </label>
+          <!-- password -->
 
-                 <!--comfirm password -->
-                <label class="input input-bordered flex items-center gap-2 mb-1  bg-slate-100 text-black">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      class="h-4 w-4 opacity-70">
-                      <path
-                        fill-rule="evenodd"
-                        d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-                        clip-rule="evenodd" />
-                    </svg>
-                    <input type="password" formControlName="confirmPassword" class="grow"  />
-                </label>
-                    
-             
-            </form>
-        </body>
-    
-        <footer >
-            <article class="justify-self-center">
-                <h4 class="text-black">¿Ya tienes una cuenta? 
-                  <span (click)="toggleView()" class="text-red-700 border-b border-red-600 cursor-pointer">Click aquí!!</span>
-                </h4>
-              </article>
-            <div class="justify-self-center mt-6">
-              <button class="btn text-white bg-[#400101] border-2 px-8 "  (click)="onSubmitRegister() "><p *ngIf="!loading">Register</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
-            </div>
-        </footer>
+          <label
+            class="input input-bordered flex items-center gap-2 mb-1 bg-slate-100 text-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="h-4 w-4 opacity-70"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <input type="password" formControlName="password" class="grow" />
+          </label>
 
+          <!--comfirm password -->
+          <label
+            class="input input-bordered flex items-center gap-2 mb-1 bg-slate-100 text-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="h-4 w-4 opacity-70"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <input
+              type="password"
+              formControlName="confirmPassword"
+              class="grow"
+            />
+          </label>
+        </form>
+      </body>
+
+      <footer>
+        <article class="justify-self-center">
+          <h4 class="text-black">
+            ¿Ya tienes una cuenta?
+            <span
+              (click)="toggleView()"
+              class="text-red-700 border-b border-red-600 cursor-pointer"
+              >Click aquí!!</span
+            >
+          </h4>
+        </article>
+        <div class="justify-self-center mt-6">
+          <button
+            class="btn text-white bg-[#400101] border-2 px-8"
+            (click)="onSubmitRegister()"
+          >
+            <p *ngIf="!loading">Register</p>
+            <i [ngClass]="{ 'pi pi-spin pi-spinner': loading }"></i>
+          </button>
+        </div>
+      </footer>
     </div>
-    
+
     <!------------------------------------------- this is the part of the  RECOVER MY PASSWORD page ------------------------------>
-     <div class="recoverPasword" *ngIf="recoverPassword  && !inputCodeRecover">
+    <div class="recoverPasword" *ngIf="recoverPassword && !inputCodeRecover">
+      <header class="text-black">
+        <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4">
+          <span
+            class="pi pi-arrow-left text-xl mr-4 hover:bg-[#400101] rounded-full hover:text-white p-2 px-3 hover:cursor-pointer"
+            (click)="goToLogin()"
+          ></span
+          >Recover my password <span class="pi-lock pi text-3xl ml-4"></span>
+        </h2>
+        <span class="py-4">Introduzca su correo electrónico</span>
+      </header>
 
-           
-        <header class="text-black ">
-            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 "><span class="pi pi-arrow-left text-xl mr-4 hover:bg-[#400101] rounded-full hover:text-white p-2 px-3 hover:cursor-pointer" (click)="goToLogin()"></span>Recover my password <span class="pi-lock pi text-3xl ml-4"></span></h2>
-            <span class="py-4 ">Introduzca su correo electrónico</span>
-        </header>
-        
-        <body>
-            <form action="" class="flex flex-col gap-y-5 m-6" [formGroup]="recoverPaswordForm">
-                <label class="input input-bordered flex items-center gap-2 bg-slate-100 text-black">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 16 16"
-                      fill="currentColor"
-                      class="h-4 w-4 opacity-70">
-                      <path
-                        d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
-                      <path
-                        d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
-                    </svg>
-                    <input type="text" class="grow" placeholder="Email" formControlName="emailAddress" />
-                </label>
-    
-        
-            </form>
-        </body>
-    
-        <footer >
-            <article class="justify-self-center">
-                <h4 class="text-black">¿Quieres volver a intentarlo? 
-                </h4>
-                <span (click)="toggleView()" class="text-red-700 border-b border-red-600 cursor-pointer">volver a enviar codigo!</span>
-              </article>
-            <div class="justify-self-center mt-6">
-                <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitForgotPassword()"><p *ngIf="!loading">Send Code</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
-            </div>
-        </footer>
-
-     </div>
-
-     <!-- this is the part of introduce CODE of recover my password page -->
-      <div class="flex flex-col" *ngIf="inputCodeRecover">
-        <header class="text-black ">
-            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Recuperar mi contraseña <span class="pi-key pi text-3xl ml-4"></span></h2>
-            <span class="py-4 "> Por favor ingrese el codigo enviado a su correo electronico
-            </span>
-        </header>
-
-        <form class="flex justify-center space-x-2 mt-4 text-black" [formGroup]="sendCodeRecoverForm">
-
-            <!-- Input 1 -->
+      <body>
+        <form
+          action=""
+          class="flex flex-col gap-y-5 m-6"
+          [formGroup]="recoverPaswordForm"
+        >
+          <label
+            class="input input-bordered flex items-center gap-2 bg-slate-100 text-black"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="h-4 w-4 opacity-70"
+            >
+              <path
+                d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z"
+              />
+              <path
+                d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
+              />
+            </svg>
             <input
               type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 0)"
-              (keydown)="handleKeyDown($event, 0)"
-              (paste)="handlePaste($event)"
-              #code0
+              class="grow"
+              placeholder="Email"
+              formControlName="emailAddress"
             />
-          
-            <!-- Input 2 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 1)"
-              (keydown)="handleKeyDown($event, 1)"
-              (paste)="handlePaste($event)"
-              #code1
-            />
-          
-            <!-- Input 3 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 2)"
-              (keydown)="handleKeyDown($event, 2)"
-              (paste)="handlePaste($event)"
-              #code2
-            />
-          
-            <!-- Input 4 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 3)"
-              (keydown)="handleKeyDown($event, 3)"
-              (paste)="handlePaste($event)"
-              #code3
-            />
-            <!-- Input 5 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 4)"
-              (keydown)="handleKeyDown($event, 4)"
-              (paste)="handlePaste($event)"
-              #code4
-            />
-            <!-- Input 6 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 5)"
-              (keydown)="handleKeyDown($event, 5)"
-              (paste)="handlePaste($event)"
-              #code5
-            />
-
+          </label>
         </form>
-        <div class="flex flex-row mt-6 justify-center">
-            <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeRecover()"><p *ngIf="!loading">Send Code</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
+      </body>
+
+      <footer>
+        <article class="justify-self-center">
+          <h4 class="text-black">¿Quieres volver a intentarlo?</h4>
+          <span
+            (click)="toggleView()"
+            class="text-red-700 border-b border-red-600 cursor-pointer"
+            >volver a enviar codigo!</span
+          >
+        </article>
+        <div class="justify-self-center mt-6">
+          <button
+            class="btn text-white bg-[#400101] border-2 px-8"
+            (click)="onSubmitForgotPassword()"
+          >
+            <p *ngIf="!loading">Send Code</p>
+            <i [ngClass]="{ 'pi pi-spin pi-spinner': loading }"></i>
+          </button>
         </div>
-          
+      </footer>
+    </div>
 
+    <!-- this is the part of introduce CODE of recover my password page -->
+    <div class="flex flex-col" *ngIf="inputCodeRecover">
+      <header class="text-black">
+        <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4">
+          Recuperar mi contraseña <span class="pi-key pi text-3xl ml-4"></span>
+        </h2>
+        <span class="py-4">
+          Por favor ingrese el codigo enviado a su correo electronico
+        </span>
+      </header>
+
+      <form
+        class="flex justify-center space-x-2 mt-4 text-black"
+        [formGroup]="sendCodeRecoverForm"
+      >
+        <!-- Input 1 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 0, codeInputs)"
+          (keydown)="handleKeyDown($event, 0, codeInputs)"
+          (paste)="handlePaste($event, codeInputs)"
+          #code0
+        />
+
+        <!-- Input 2 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 1, codeInputs)"
+          (keydown)="handleKeyDown($event, 1, codeInputs)"
+          (paste)="handlePaste($event, codeInputs)"
+          #code1
+        />
+
+        <!-- Input 3 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 2, codeInputs)"
+          (keydown)="handleKeyDown($event, 2, codeInputs)"
+          (paste)="handlePaste($event, codeInputs)"
+          #code2
+        />
+
+        <!-- Input 4 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 3, codeInputs)"
+          (keydown)="handleKeyDown($event, 3, codeInputs)"
+          (paste)="handlePaste($event, codeInputs)"
+          #code3
+        />
+        <!-- Input 5 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 4, codeInputs)"
+          (keydown)="handleKeyDown($event, 4, codeInputs)"
+          (paste)="handlePaste($event, codeInputs)"
+          #code4
+        />
+        <!-- Input 6 -->
+        <input
+          type="text"
+          maxlength="1"
+          class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+          (input)="handleInput($event, 5, codeInputs)"
+          (keydown)="handleKeyDown($event, 5, codeInputs)"
+          (paste)="handlePaste($event, codeInputs)"
+          #code5
+        />
+      </form>
+      <div class="flex flex-row mt-6 justify-center">
+        <button
+          class="btn text-white bg-[#400101] border-2 px-8"
+          (click)="onSubmitCodeRecover()"
+        >
+          <p *ngIf="!loading">Send Code</p>
+          <i [ngClass]="{ 'pi pi-spin pi-spinner': loading }"></i>
+        </button>
       </div>
-
-       <!-- this is the part of introduce CODE of recover my password page -->
-       <div class="flex flex-col" *ngIf="inputCodeRecover">
-        <header class="text-black ">
-            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Recuperar mi contraseña <span class="pi-key pi text-3xl ml-4"></span></h2>
-            <span class="py-4 "> Por favor ingrese el codigo enviado a su correo electronico
-            </span>
-        </header>
-
-        <form class="flex justify-center space-x-2 mt-4 text-black" [formGroup]="sendCodeRecoverForm">
-
-            <!-- Input 1 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 0)"
-              (keydown)="handleKeyDown($event, 0)"
-              (paste)="handlePaste($event)"
-              #code0
-            />
-          
-            <!-- Input 2 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 1)"
-              (keydown)="handleKeyDown($event, 1)"
-              (paste)="handlePaste($event)"
-              #code1
-            />
-          
-            <!-- Input 3 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 2)"
-              (keydown)="handleKeyDown($event, 2)"
-              (paste)="handlePaste($event)"
-              #code2
-            />
-          
-            <!-- Input 4 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 3)"
-              (keydown)="handleKeyDown($event, 3)"
-              (paste)="handlePaste($event)"
-              #code3
-            />
-            <!-- Input 5 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 4)"
-              (keydown)="handleKeyDown($event, 4)"
-              (paste)="handlePaste($event)"
-              #code4
-            />
-            <!-- Input 6 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 5)"
-              (keydown)="handleKeyDown($event, 5)"
-              (paste)="handlePaste($event)"
-              #code5
-            />
-
-        </form>
-        <div class="flex flex-row mt-6 justify-center">
-            <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeRecover()"><p *ngIf="!loading">Send Code</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
-        </div>
-          
-
-      </div>
-
-       <!-- this is the part of introduce CODE of recover my password page -->
-       <div class="flex flex-col" *ngIf="inputCodeRecover">
-        <header class="text-black ">
-            <h2 class="text-3xl font-bold border-b-4 border-black p-2 mb-4 ">Recuperar mi contraseña <span class="pi-key pi text-3xl ml-4"></span></h2>
-            <span class="py-4 "> Por favor ingrese el codigo enviado a su correo electronico
-            </span>
-        </header>
-
-        <form class="flex justify-center space-x-2 mt-4 text-black" [formGroup]="sendCodeRecoverForm">
-
-            <!-- Input 1 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 0)"
-              (keydown)="handleKeyDown($event, 0)"
-              (paste)="handlePaste($event)"
-              #code0
-            />
-          
-            <!-- Input 2 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 1)"
-              (keydown)="handleKeyDown($event, 1)"
-              (paste)="handlePaste($event)"
-              #code1
-            />
-          
-            <!-- Input 3 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 2)"
-              (keydown)="handleKeyDown($event, 2)"
-              (paste)="handlePaste($event)"
-              #code2
-            />
-          
-            <!-- Input 4 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 3)"
-              (keydown)="handleKeyDown($event, 3)"
-              (paste)="handlePaste($event)"
-              #code3
-            />
-            <!-- Input 5 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 4)"
-              (keydown)="handleKeyDown($event, 4)"
-              (paste)="handlePaste($event)"
-              #code4
-            />
-            <!-- Input 6 -->
-            <input
-              type="text"
-              maxlength="1"
-              class="w-12 h-12 text-center text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-              (input)="handleInput($event, 5)"
-              (keydown)="handleKeyDown($event, 5)"
-              (paste)="handlePaste($event)"
-              #code5
-            />
-
-        </form>
-        <div class="flex flex-row mt-6 justify-center">
-            <button class="btn text-white bg-[#400101] border-2 px-8 " (click)="onSubmitCodeRecover()"><p *ngIf="!loading">Send Code</p> <i [ngClass]="{'pi pi-spin pi-spinner': loading}"></i></button>
-        </div>
-          
-
-      </div>
-
-
-
-    
-</div>
-  
- 
+    </div>
+  </div>
 </dialog>
-
-

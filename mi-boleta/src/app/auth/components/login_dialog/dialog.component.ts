@@ -134,6 +134,7 @@ export class DialogComponent {
       console.log(response);
       this.loading=false
       } catch (error) {
+        this.loading=false
         console.log(error);
       }
       
@@ -191,37 +192,37 @@ export class DialogComponent {
   }
 
   // Function to handle recovery code character entry
-  handleInput(event: any, index: number) {
+  handleInput(event: any, index: number, array:QueryList<ElementRef>) {
     const input = event.target;
-    if (input.value.length === 1 && index < this.codeInputs.length - 1) {
+    if (input.value.length === 1 && index < array.length - 1) {
       // Mover el foco al siguiente input
-      this.codeInputs.toArray()[index + 1].nativeElement.focus();
+      array.toArray()[index + 1].nativeElement.focus();
     }
   }
 
   // function to handle the keystroke event on input
-  handleKeyDown(event: KeyboardEvent, index: number) {
+  handleKeyDown(event: KeyboardEvent, index: number, array:QueryList<ElementRef>) {
     const input = event.target as HTMLInputElement;
 
     if (event.key === 'ArrowLeft' && index > 0) {
       // Mover foco al input anterior
-      this.codeInputs.toArray()[index - 1].nativeElement.focus();
-    } else if (event.key === 'ArrowRight' && index < this.codeInputs.length - 1) {
+      array.toArray()[index - 1].nativeElement.focus();
+    } else if (event.key === 'ArrowRight' && index < array.length - 1) {
       // Mover foco al siguiente input
-      this.codeInputs.toArray()[index + 1].nativeElement.focus();
+      array.toArray()[index + 1].nativeElement.focus();
     } else if (event.key === 'Backspace' && input.value === '' && index > 0) {
       // Mover foco al input anterior si está vacío
-      this.codeInputs.toArray()[index - 1].nativeElement.focus();
+      array.toArray()[index - 1].nativeElement.focus();
     }
   }
 
   // function to handle the code pasting event
-  handlePaste(event: ClipboardEvent) {
+  handlePaste(event: ClipboardEvent, array:QueryList<ElementRef>) {
     const clipboardData = event.clipboardData?.getData('text') || '';
     const values = clipboardData.split('');
 
     // Rellenar los inputs con el valor pegado
-    this.codeInputs.forEach((input, index) => {
+    array.forEach((input, index) => {
       input.nativeElement.value = values[index] || '';
     });
 

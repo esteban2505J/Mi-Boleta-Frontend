@@ -3,6 +3,7 @@ import { urlEndpoints } from "../../general/env/urls";
 import { RegisterClientDTO } from "../dto/RegisterClientDTO";
 import { LoginClientDTO } from "../dto/LoginClientDTO";
 import { Injectable } from "@angular/core";
+import axios from "axios";
 
 
 @Injectable({
@@ -47,6 +48,11 @@ export class AuthService {
     }
     static async sendCodeActiveAccount(code:string, emailAddress:string){
         return await apiClient.post(`${urlEndpoints.authServiceUrl}/activation-code?code=${code}&emailAddress=${emailAddress}`)
+    }
+
+    static async checkToken(token:string){
+
+        return await apiClient.post(`${urlEndpoints.authServiceUrl}`)
     }
 
     

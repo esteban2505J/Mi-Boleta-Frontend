@@ -51,6 +51,11 @@ export class DialogComponent {
   goToLogin() {
     this.isLogin = true;
     this.recoverPassword = false;
+    this.recoverPassword = false;
+    this.inputCodeRecover=false;
+    this.activeAccount =false;
+    this.visible  = false;
+    this.changePassword=false;
   }
 
   registerForm: FormGroup;
@@ -101,7 +106,6 @@ export class DialogComponent {
   }
 
   
-
   showDialog() {
       this.visible = true;
   }
@@ -162,6 +166,7 @@ export class DialogComponent {
         }
         this.loading=false
       } catch (error) {
+        this.loading=false
         console.log(error);
         
       }
